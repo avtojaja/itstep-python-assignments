@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>All Books</h2>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for book in books %}
+
+    <tr>
+        <td>{{book.id}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.year}}</td>
+    <td>
+        <a href="/get_book/{{book.id}}">View</a>
+        <a href="/update_book/{{book.id}}">Edit</a>
+        <form action="/delete_book/{{book.id}}" method="POST" style="display:inline;">
+            <button type="submit">Delete</button>
+        </form>
+    </td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+{% endblock %}
